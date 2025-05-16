@@ -1,0 +1,132 @@
+/* Main Styling for Traffic Challan Payment System */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Header Styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #007bff;
+    color: white;
+    padding: 3rem 0;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 2rem 0;
+}
+
+/* Challan Details */
+.challan-details {
+    background-color: #f1f8ff;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Payment Success */
+.payment-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Payment Error */
+.payment-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* QR Code Container */
+.qr-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.qr-code {
+    max-width: 200px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+/* Admin Panel */
+.admin-sidebar {
+    background-color: #343a40;
+    color: white;
+    min-height: 100vh;
+}
+
+.admin-content {
+    padding: 20px;
+}
+
+/* Stats Cards */
+.stats-card {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.stats-card-primary {
+    background-color: #007bff;
+}
+
+.stats-card-success {
+    background-color: #28a745;
+}
+
+.stats-card-danger {
+    background-color: #dc3545;
+}
+
+.stats-card-warning {
+    background-color: #ffc107;
+}
