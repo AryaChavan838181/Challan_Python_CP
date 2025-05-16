@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $api_key = isset($_POST['api_key']) ? sanitizeInput($_POST['api_key']) : '';
 
 // Validate API key (this should match the key used by your camera system)
-$valid_api_key = 'your_camera_api_key'; // Change this to a secure API key
+$valid_api_key = getenv('CAMERA_API_KEY') ?: 'your_camera_api_key';
 
 if ($api_key !== $valid_api_key) {
     $response['message'] = 'Invalid API key';

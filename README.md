@@ -51,15 +51,34 @@ This project implements an automated traffic challan system that:
 ### Setup Steps
 
 1. **Upload files to your hosting account:**
-   - Upload all files in the `Website` folder to your hosting root directory
+   - Upload all files in the `Website` folder and the `.env` file to your hosting root directory
 
-2. **Configure database connection:**
-   - Edit `includes/config.php` with your database credentials:
-     ```php
-     $db_host = 'localhost';    // Your database host
-     $db_name = 'your_db_name'; // Your database name
-     $db_user = 'your_db_user'; // Your database username
-     $db_pass = 'your_db_pass'; // Your database password
+2. **Configure environment variables:**
+   - Edit the `.env` file with your configuration settings:
+     ```
+     # Database Configuration
+     DB_HOST=localhost
+     DB_NAME=traffic_challan
+     DB_USER=your_database_username
+     DB_PASS=your_database_password
+
+     # Email API Configuration
+     EMAIL_API_URL=https://thegroup11.com/api/sendmail
+     EMAIL_API_KEY=your_actual_api_key
+
+     # Site Configuration
+     SITE_NAME=Traffic Challan Payment System
+     SITE_URL=https://yourwebsite.com
+
+     # Camera API Security
+     CAMERA_API_KEY=your_camera_api_key
+
+     # UPI Payment Details
+     UPI_ID=your-upi-id@bank
+
+     # Admin Default Credentials
+     ADMIN_USERNAME=admin
+     ADMIN_PASSWORD=your_secure_password
      ```
 
 3. **Set up the database:**
@@ -67,24 +86,10 @@ This project implements an automated traffic challan system that:
    - This script will create all the necessary tables
    - You can add sample data by clicking the "Add Sample Data" button
 
-4. **Update email API configuration:**
-   - Edit the email API URL and key in `includes/config.php`:
-     ```php
-     $email_api_url = "https://thegroup11.com/api/sendmail";
-     $email_api_key = "dGh1Z3JvdXAxMQ=="; // Your actual API key
-     ```
-
-5. **Update UPI payment details:**
-   - Edit your UPI ID in `payment.php` file:
-     ```php
-     $upiId = 'your-upi-id@bank'; // Replace with your actual UPI ID
-     ```
-
-6. **Configure API access for camera integration:**
-   - Edit `api/add_violation.php` to set your camera API key:
-     ```php
-     $valid_api_key = 'your_camera_api_key'; // Change this to a secure API key
-     ```
+4. **Security considerations:**
+   - Make sure the `.env` file is not accessible from the web
+   - Add `.env` to your `.gitignore` file to avoid committing sensitive information
+   - The system is already set up to use these environment variables
 
 ## Usage Instructions
 
@@ -123,6 +128,11 @@ Parameters:
 2. Use HTTPS for all web traffic
 3. Use strong API keys for camera integration
 4. Keep database credentials secure
+5. Protect your `.env` file:
+   - Make sure it's included in `.gitignore` to avoid accidentally committing it
+   - Set proper file permissions (600) so only the web server can read it
+   - Ensure it's stored outside of publicly accessible directories when possible
+6. Regularly update your passwords and API keys
 
 ## Support
 For issues or support, please contact:

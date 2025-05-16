@@ -92,10 +92,13 @@ foreach ($tables as $table_sql) {
 }
 
 // Insert default admin user if none exists
+$admin_username = getenv('ADMIN_USERNAME') ?: 'admin';
+$admin_password = getenv('ADMIN_PASSWORD') ?: 'admin123';
+
 $default_admin_sql = "
 INSERT INTO admin_users (username, password, name, email, role)
-SELECT 'admin', '" . password_hash('admin123', PASSWORD_DEFAULT) . "', 'Administrator', 'admin@example.com', 'admin'
-WHERE NOT EXISTS (SELECT 1 FROM admin_users WHERE username = 'admin');
+SELECT '$admin_username', '" . password_hash($admin_password, PASSWORD_DEFAULT) . "', 'Administrator', 'admin@example.com', 'admin'
+WHERE NOT EXISTS (SELECT 1 FROM admin_users WHERE username = '$admin_username');
 ";
 
 try {

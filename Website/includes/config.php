@@ -1,11 +1,46 @@
 <?php
-// Database Configuration
+// Load environment variables from .env file
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        error_log("Environment file not found: $path");
+        return false;
+    }
 
-// Hostinger MySQL Database credentials
-$db_host = 'localhost';      // Usually 'localhost' for Hostinger
-$db_name = 'traffic_challan'; // Database name
-$db_user = 'username';       // Database username - replace with your actual username
-$db_pass = 'password';       // Database password - replace with your actual password
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        // Skip comments
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+
+        // Parse env variable
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+        
+        // Remove quotes if present
+        if (preg_match('/^([\'"])(.*)\1$/', $value, $matches)) {
+            $value = $matches[2];
+        }
+        
+        // Set environment variable
+        putenv("$name=$value");
+        $_ENV[$name] = $value;
+        $_SERVER[$name] = $value;
+    }
+    return true;
+}
+
+// Determine the root path and load .env file
+$rootPath = dirname(dirname(__DIR__));
+$dotEnvPath = $rootPath . '/.env';
+loadEnv($dotEnvPath);
+
+// Database Configuration
+$db_host = getenv('DB_HOST') ?: 'localhost';
+$db_name = getenv('DB_NAME') ?: 'traffic_challan';
+$db_user = getenv('DB_USER') ?: 'username';
+$db_pass = getenv('DB_PASS') ?: 'password';
 
 // Create database connection
 try {
@@ -22,10 +57,10 @@ try {
 }
 
 // Email API Configuration
-$email_api_url = "https://thegroup11.com/api/sendmail";
-$email_api_key = "dGh1Z3JvdXAxMQ=="; // Replace with your actual API key
+$email_api_url = getenv('EMAIL_API_URL') ?: "https://thegroup11.com/api/sendmail";
+$email_api_key = getenv('EMAIL_API_KEY') ?: "dGh1Z3JvdXAxMQ==";
 
 // Site Configuration
-$site_name = "Traffic Challan Payment System";
-$site_url = "https://yourwebsite.com"; // Replace with your actual website URL
+$site_name = getenv('SITE_NAME') ?: "Traffic Challan Payment System";
+$site_url = getenv('SITE_URL') ?: "https://yourwebsite.com";
 ?>

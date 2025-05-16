@@ -9,7 +9,7 @@ require_once 'includes/functions.php';
 $challanDetails = null;
 $error = '';
 $upiLink = '';
-$upiId = 'your-upi-id@bank'; // Replace with your actual UPI ID
+$upiId = getenv('UPI_ID') ?: 'your-upi-id@bank'; // Get from environment variables
 
 // Check if challan ID is provided
 if (isset($_GET['challan']) && !empty($_GET['challan'])) {
