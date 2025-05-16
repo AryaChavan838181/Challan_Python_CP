@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 # Traffic Challan Payment System
 
 A comprehensive system for managing traffic violations, sending notifications to vehicle owners, and facilitating online payments.
