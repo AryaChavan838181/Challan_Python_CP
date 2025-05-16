@@ -134,12 +134,5 @@ Parameters:
    - Ensure it's stored outside of publicly accessible directories when possible
 6. Regularly update your passwords and API keys
 
-## Support
-For issues or support, please contact:
-
-Email: info@trafficchallan.com
-Phone: +91 9876543210
-
----
 
 © 2025 Traffic Challan Payment System. All rights reserved.
