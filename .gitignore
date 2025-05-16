@@ -1,0 +1,63 @@
+# Environment variables file
+.env
+
+# IDE/Editor folders
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# Logs
+/logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Uploaded files and images
+/Website/uploads/
+
+# Cache & session files
+/Website/cache/
+/Website/sessions/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Build output
+/dist/
+/build/
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
