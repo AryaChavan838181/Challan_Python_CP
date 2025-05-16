@@ -1,0 +1,10 @@
+opencv-python
+numpy
+pytesseract
+pandas
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics
+onnx
+Pillow
+easyocr
