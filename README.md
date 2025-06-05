@@ -1,130 +1,128 @@
+# 🚦 Automated Traffic Light Plate Detection & Boom Barrier System
 
-# Traffic Challan Payment System
+## Overview
 
-A comprehensive system for managing traffic violations, sending notifications to vehicle owners, and facilitating online payments.
+This project is a **real-time, AI-powered vehicle license plate detection and violation logging system** designed for smart traffic management at intersections, tolls, or restricted areas. It integrates computer vision, OCR, and Arduino-based hardware to detect vehicles, recognize license plates, log violations, and control a physical boom barrier—all with robust fallback mechanisms and API/email integration.
 
-## Project Overview
+---
 
-This project implements an automated traffic challan system that:
+## Features
 
-1. Captures traffic violations using cameras (red light violations)
-2. Identifies vehicle number plates using image processing
-3. Issues challans to vehicle owners
-4. Sends email notifications to owners
-5. Provides an online payment portal for challan payments
-6. Maintains a database of violations and payments
-7. Includes an admin dashboard for system management
+- **Real-time camera feed** with live overlays and status indicators
+- **YOLOv8 deep learning** for accurate license plate detection
+- **Haar Cascade fallback** for detection robustness
+- **EasyOCR & Tesseract** for high-accuracy license plate text extraction
+- **Ultrasonic sensor via Arduino** for vehicle presence detection
+- **Automated boom barrier control** (via Arduino & servo)
+- **Violation logging** with cooldown to prevent duplicates
+- **Automatic violation image saving** for evidence
+- **Email notifications** with payment links (Cashfree integration)
+- **API integration** for backend logging and analytics
+- **Keyboard simulation mode** for testing without hardware
+- **Movable detection line** (drag with mouse)
+- **Multi-threaded for smooth, real-time performance**
 
-## System Components
+---
 
-### 1. Camera System (Existing)
-- Captures images when a vehicle violates traffic rules
-- Uses image processing to extract vehicle number plate
-- Sends the captured data to the server API
+## System Architecture
 
-### 2. Website
-- **Public Pages:**
-  - Home page with challan lookup functionality
-  - Challan details view page
-  - Payment processing page using Google Pay QR
-  - Payment receipt generation
-  
-- **Admin Panel:**
-  - Dashboard with statistics
-  - Violation management
-  - Vehicle owner management
-  - Reports and analytics
+1. **Camera** captures live video.
+2. **Arduino** (with ultrasonic sensor) detects vehicle presence and controls the boom barrier.
+3. **YOLO/Haar** detects license plates in the video frames.
+4. **EasyOCR/Tesseract** extracts text from detected plates.
+5. **Violation logic** checks if a vehicle is present and if a new violation should be logged.
+6. **API/Email** sends notifications and logs events.
+7. **Boom barrier** is opened/closed automatically for detected vehicles.
 
-### 3. Database
-- Vehicle owners information
-- Traffic violations records
-- Payment records
-- Admin users
+---
 
-## Installation Instructions
+## How It Works
 
-### Prerequisites
-- PHP 7.4 or higher
-- MySQL database
-- Web server (Apache/Nginx)
-- Hostinger hosting account or similar
+1. **Vehicle Detection:**  
+   Arduino with an ultrasonic sensor detects when a vehicle is present (distance < 5cm) and signals the Python system.
+2. **Frame Processing:**  
+   When a vehicle is detected, the camera frame is processed for license plate detection using YOLO. If YOLO fails, Haar cascade is used as a fallback.
+3. **Plate Cropping & Enhancement:**  
+   Detected plate regions are cropped and enhanced for OCR.
+4. **OCR:**  
+   EasyOCR is used to extract the license plate number. If it fails, Tesseract is used as a backup.
+5. **Violation Logging:**  
+   If a valid plate is detected and not in cooldown, the violation is logged, an image is saved, and an email/API notification is sent.
+6. **Boom Barrier Control:**  
+   The recognized plate is sent to Arduino, which opens the boom barrier, waits, and then closes it.
+7. **User Interface:**  
+   The system displays the live feed with overlays, detection results, and status info. The detection line can be moved with the mouse.
 
-### Setup Steps
+---
 
-1. **Upload files to your hosting account:**
-   - Upload all files in the `Website` folder and the `.env` file to your hosting root directory
+## Hardware Requirements
 
-2. **Configure environment variables:**
-   - Edit the `.env` file with your configuration settings:
-     ```
-     # Database Configuration
-     DB_HOST=localhost
-     DB_NAME=traffic_challan
-     DB_USER=your_database_username
-     DB_PASS=your_database_password
+- **Camera** (USB webcam or IP camera)
+- **Arduino** (Uno/Nano) with:
+  - Ultrasonic sensor (for vehicle detection)
+  - Servo motor (for boom barrier)
+  - LEDs (for status indication)
+- **Computer** (Windows/Linux, with Python 3.x and a GPU for best YOLO performance)
 
-     # Email API Configuration
-     EMAIL_API_URL=https://thegroup11.com/api/sendmail
-     EMAIL_API_KEY=your_actual_api_key
+---
 
-     # Site Configuration
-     SITE_NAME=Traffic Challan Payment System
-     SITE_URL=https://yourwebsite.com
+## Getting Started
 
-     # Camera API Security
-     CAMERA_API_KEY=your_camera_api_key
+1. **Clone the repository** and install dependencies:
+    ```bash
+    pip install opencv-python numpy easyocr pytesseract ultralytics pyserial
+    ```
 
-     # UPI Payment Details
-     UPI_ID=your-upi-id@bank
+2. **Connect your Arduino** (with ultrasonic sensor and servo) to your PC.
 
-     # Admin Default Credentials
-     ADMIN_USERNAME=admin
-     ADMIN_PASSWORD=your_secure_password
-     ```
+3. **Configure serial port** in the Python script (default: `COM17`).
 
-3. **Set up the database:**
-   - Visit `https://your-domain.com/setup_database.php` in your browser
-   - This script will create all the necessary tables
-   - You can add sample data by clicking the "Add Sample Data" button
+4. **Place YOLO model weights** and Haar cascade XML in the specified paths.
 
-4. **Security considerations:**
-   - Make sure the `.env` file is not accessible from the web
-   - Add `.env` to your `.gitignore` file to avoid committing sensitive information
-   - The system is already set up to use these environment variables
+5. **Run the main script:**
+    ```bash
+    python Final_detector.py
+    ```
 
-## Usage Instructions
+6. **Controls:**
+    - `'q'`: Quit application
+    - `'c'`: Clear violation history
+    - Mouse drag: Move detection line
+    - `'r'`/`'g'`: Simulate vehicle detected/no vehicle (keyboard mode)
 
-### For Vehicle Owners
-1. Receive email notification when a violation is detected
-2. Click on the payment link in the email or visit the website
-3. Enter challan ID or vehicle number to view challan details
-4. Process payment using Google Pay by scanning the QR code
-5. Enter transaction ID to confirm payment
-6. Download receipt for future reference
+---
 
-### For Administrators
-1. Log in to the admin panel using default credentials:
-   - Username: admin
-   - Password: admin123
-2. View dashboard with violation statistics
-3. Manage violations and vehicle owner information
-4. Generate reports and track payment status
-
-### For Camera Integration
-To add a new violation from your camera system, make an API call:
+## Project Structure
 
 ```
-POST https://your-domain.com/api/add_violation.php
-
-Parameters:
-- api_key: your_camera_api_key
-- numberplate: MH01AB1234
-- location: Junction Name
-- violation_type: Red Light Violation
-- image: [Base64 encoded image data]
+.
+├── Arduino/
+│   └── [Arduino code for sensor & boom]
+├── models/
+│   └── [YOLO weights]
+├── violations/
+│   └── [Saved violation images]
+├── Final_detector.py
+├── api_manager.py
+└── ...
 ```
 
+---
 
+## Customization
 
-© 2025 Traffic Challan Payment System. All rights reserved.
->>>>>>> 1601147b3e2dd3f02f35d1b61d139087be1a4b31
+- **Detection line position:** Drag with mouse in the UI.
+- **Cooldown time:** Adjust `self.violation_timeout` in the code.
+- **API/email logic:** Modify `api_manager.py` as needed.
+- **Camera index:** Change in `start_camera()` if needed.
+
+---
+
+## Troubleshooting
+
+- **YOLO not available:** Make sure model weights are in the correct path and dependencies are installed.
+- **Arduino not detected:** Check COM port and wiring.
+- **No camera:** Ensure your camera is connected and accessible.
+- **OCR errors:** Try cleaning the camera lens or improving lighting.
+
+---
