@@ -1,0 +1,100 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
+                .container { max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+                .header { background-color: #d32f2f; color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; margin: -20px -20px 20px -20px; }
+                .violation-id { background-color: #ff5722; color: white; padding: 10px; border-radius: 5px; display: inline-block; margin: 10px 0; }
+                .details { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0; }
+                .amount { font-size: 24px; color: #d32f2f; font-weight: bold; text-align: center; margin: 20px 0; }
+                .footer { text-align: center; color: #666; margin-top: 30px; font-size: 12px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>🚨 TRAFFIC VIOLATION NOTICE 🚨</h1>
+                    <p>Signal Line Crossing Detected</p>
+                </div>
+                
+                <div class="violation-id">
+                    <strong>Violation ID: 2DFF84EC</strong>
+                </div>
+                
+                <div class="details">
+                    <h3>📋 Violation Details:</h3>
+                    <p><strong>License Plate:</strong> 199YA</p>
+                    <p><strong>Date & Time:</strong> 2025-05-25 23:28:25</p>
+                    <p><strong>Location:</strong> Traffic Signal Camera</p>
+                    <p><strong>Violation Type:</strong> Crossing Stop Line During Red Signal</p>
+                </div>
+                
+                <div class="amount">
+                    <p>Fine Amount: ₹1</p>
+                </div>
+                
+                <!-- EMBEDDED CASHFREE PAYMENT FORM -->
+                
+            <!-- EMBEDDED CASHFREE PAYMENT FORM -->
+            <div style="background: linear-gradient(45deg, #e8f5e8, #f0f8f0); padding: 25px; border-radius: 12px; margin: 25px 0; border: 2px solid #52c41a; text-align: center;">
+                <h3 style="color: #155724; margin-bottom: 20px;">💳 SECURE PAYMENT WITH CASHFREE</h3>
+                
+                <div style="background: #fff; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #ddd;">
+                    <div style="display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px;">
+                        <span style="font-weight: 600; color: #333;">Order ID:</span>
+                        <span style="color: #666; font-family: monospace;">order_1748195905</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px;">
+                        <span style="font-weight: 600; color: #333;">Session ID:</span>
+                        <span style="color: #666; font-family: monospace;">session_jvv9xrf7Nxe_7rfqQmfneaH4UNLlyHq-I29b1rga051ZeNna3P43mx8ToOFhZsGq5IDjFpo8Q4UCkkmQUtKrvgge0ylZp29iZZo5MzCDVj0xTZ_tFeckCfRxvXIpayment</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px;">
+                        <span style="font-weight: 600; color: #333;">Amount:</span>
+                        <span style="color: #666; font-family: monospace;">₹1</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px;">
+                        <span style="font-weight: 600; color: #333;">Environment:</span>
+                        <span style="color: #666; font-family: monospace;">Production</span>
+                    </div>
+                </div>
+                
+                <!-- CASHFREE POST FORM (EXACT as specified by Cashfree) -->
+                <form method="post" action="https://api.cashfree.com/pg/view/sessions/checkout" target="_blank">
+                    <input type="hidden" name="payment_session_id" value="session_jvv9xrf7Nxe_7rfqQmfneaH4UNLlyHq-I29b1rga051ZeNna3P43mx8ToOFhZsGq5IDjFpo8Q4UCkkmQUtKrvgge0ylZp29iZZo5MzCDVj0xTZ_tFeckCfRxvXIpayment">
+                    <input type="hidden" name="browser_meta" value='{"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", "screen_resolution": "1920x1080", "color_depth": "24", "timezone_offset": "-330"}'>
+                    <button type="submit" style="display: inline-block; width: 80%; padding: 18px; background: linear-gradient(45deg, #52c41a, #73d13d) !important; color: white !important; border: none; border-radius: 10px; font-size: 18px; font-weight: 600; cursor: pointer; text-decoration: none !important;">
+                        🔒 PAY ₹1 WITH CASHFREE
+                    </button>
+                </form>
+                
+                <div style="background: #e6f7ff; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #1890ff;">
+                    <p style="font-size: 12px; margin: 10px 0; color: #666;">
+                        ✅ Secure payment powered by Cashfree<br>
+                        ✅ Session valid for 30 minutes<br>
+                        ✅ All card details encrypted
+                    </p>
+                </div>
+            </div>
+            
+                
+                <div class="details">
+                    <h3>⚠️ Important Information:</h3>
+                    <ul>
+                        <li>This violation was automatically detected by our smart camera system</li>
+                        <li>Payment must be made within 15 days to avoid additional penalties</li>
+                        <li>Late payment will result in doubling of the fine amount</li>
+                        <li>For disputes, contact traffic police with violation ID</li>
+                    </ul>
+                </div>
+                
+                <div class="footer">
+                    <p>This is an automated message from Traffic Management System</p>
+                    <p>Smart Signal Violation Detection System</p>
+                    <p><strong>Violation ID: 2DFF84EC</strong></p>
+                </div>
+            </div>
+        </body>
+        </html>
+        
