@@ -9,7 +9,7 @@ This project is a **real-time, AI-powered vehicle license plate detection and vi
 ## Features
 
 - **Real-time camera feed** with live overlays and status indicators
-- **YOLOv8 deep learning** for accurate license plate detection
+- **YOLOv11 deep learning** for accurate license plate detection
 - **Haar Cascade fallback** for detection robustness
 - **EasyOCR & Tesseract** for high-accuracy license plate text extraction
 - **Ultrasonic sensor via Arduino** for vehicle presence detection
@@ -88,7 +88,7 @@ This project is a **real-time, AI-powered vehicle license plate detection and vi
     - `'q'`: Quit application
     - `'c'`: Clear violation history
     - Mouse drag: Move detection line
-    - `'r'`/`'g'`: Simulate vehicle detected/no vehicle (keyboard mode)
+    - `'r'`/`'g'`: Simulate vehicle red/green light (keyboard mode)
 
 ---
 
