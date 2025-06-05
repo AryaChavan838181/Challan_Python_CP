@@ -124,16 +124,6 @@ Parameters:
 - image: [Base64 encoded image data]
 ```
 
-## Security Considerations
-1. Change the default admin password immediately after installation
-2. Use HTTPS for all web traffic
-3. Use strong API keys for camera integration
-4. Keep database credentials secure
-5. Protect your `.env` file:
-   - Make sure it's included in `.gitignore` to avoid accidentally committing it
-   - Set proper file permissions (600) so only the web server can read it
-   - Ensure it's stored outside of publicly accessible directories when possible
-6. Regularly update your passwords and API keys
 
 
 © 2025 Traffic Challan Payment System. All rights reserved.
